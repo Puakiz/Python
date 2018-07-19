@@ -22,3 +22,7 @@
 [vyv2000](https://github.com/vyv2000)
 
 [Mq1023](https://github.com/Mq1023)
+
+[evilvincent](https://github.com/evilvincent)
+
+[dawanglin](https://github.com/dawanglin)
