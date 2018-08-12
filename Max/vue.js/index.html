@@ -16,6 +16,7 @@
                 <thead>
                     <tr>
                         <th></th>
+                        <th>选择</th>
                         <th>商品名称</th>
                         <th>商品价格</th>
                         <th>购买数量</th>
@@ -25,7 +26,8 @@
                 <tbody>
                     <tr v-for = "(item,index) in list">
                         <td>{{ index + 1 }}</td>
-                        <td>{{ item .name }}</td>
+                        <td><input type="checkbox" v-model="item.check" @click="clacPrice(index)"></td>
+                        <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
                         <td>
                             <button
@@ -39,6 +41,10 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <button @click="selectAll(true)">全选</button>
+                <button @click="selectAll(false)">反选</button>
+            </div>
             <div>总价：￥{{ totalPrice }}</div>
         </template>
         <div v-else>购物车为空</div>

@@ -6,19 +6,22 @@ var app = new Vue({
                 id:1,
                 name:'iphone 8',
                 price:6188,
-                count:1
+                count:1,
+                check:true
             },
             {
                 id:2,
                 name:'ipod pro',
                 price:5888,
-                count:1
+                count:1,
+                check:true
             },
             {
                 id:3,
                 name:'mac',
                 price:21488,
-                count:1
+                count:1,
+                check:true
             }
         ]
     },
@@ -27,7 +30,9 @@ var app = new Vue({
             var total = 0;
             for (var i = 0; i < this.list.length; i++) {
                 var item = this.list[i];
-                total += item.price * item.count;
+                if(item.check){
+                    total += item.price * item.count;
+                }
             }
             return total.toString().replace(/\B(?=(\d{3})+$)/g,',')
         }
@@ -41,7 +46,16 @@ var app = new Vue({
             this.list[index].count++;
         },
         handleRemove:function (index) {
-          this.list.splice(index,1);  
+            this.list.splice(index,1);  
+        },
+        clacPrice:function (index) {
+            this.list[index].check = this.list[index].check === true?false:true;
+        },
+        selectAll:function (choice) {
+            for (var i = 0; i < this.list.length; i++) {
+                var item = this.list[i];
+                item.check = choice;
+            }
         }
     }
 });
