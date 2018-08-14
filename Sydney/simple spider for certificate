@@ -1,0 +1,20 @@
+##做了一个简单的爬虫,用来爬取业务数据,开始始终抓不到包含数据段的代码,所以考虑过使用json模块处理反馈的数据,后来发现请求网站后,sleep几秒等待数据返回就可以抓到数据,果断只用selenium+phantomjs搞定
+##由于是业内网站 隐去网站名称, 后面加强代码逐条进入连接抓取相关文件.
+#实体化driver
+driver = webdriver.PhantomJS(executable_path=r'D:\Program Files\phantomjs-2.1.1-windows\bin\phantomjs')
+driver.get('http://*********/WebSiteQueryServlet')
+#定义参数
+namelist=[]
+#循环网页爬取信息
+for i in range(0,47):
+    time.sleep(3)
+    html = driver.page_source
+    soup = bs(html,'lxml')
+    for name in soup.tbody.find_all(class_=""):
+        name = name.string
+        namelist.append(name)
+    driver.find_element_by_id('example_next').click()#捕捉next按钮,并点击
+namelist = [namelist[i:i+4] for i in range(0,len(namelist),4)]
+print(namelist)
+# driver.get_screenshot_as_file("f:/test.png")#调试过程观察phantomjs情况使用
+driver.close()
