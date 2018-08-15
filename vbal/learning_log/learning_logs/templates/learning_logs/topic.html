@@ -14,6 +14,9 @@
       <li>
         <p>{{ entry.data_added|date:'M d, Y H:i' }}</p>
         <p>{{ entry.text|linebreaks }}</p>
+        <p>
+          <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
+        </p>
     </li>
     {% empty %}
       <li>
