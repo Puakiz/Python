@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="app">
+        <input type="radio" v-model="picked" :value="value">
+        <label>单选按钮</label>
+        <p>{{ picked }}</p>
+        <p>{{ value }}</p>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                picked:false,
+                value:123
+            }
+        })
+    </script>
+</body>
+</html>
